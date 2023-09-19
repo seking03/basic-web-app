@@ -17,7 +17,6 @@ export default function QueryProcessor(query: string): string {
     );
   }
   const largestMatch = query.match(/Which of the following numbers is the largest: (\d+), (\d+), (\d+)/);
-  if (query.toLowerCase().includes("Which of the following numbers is the largest: 79, 71, 27")) {
     if (largestMatch) {
       const x: number = parseInt(largestMatch[1]);
       const y: number = parseInt(largestMatch[2]);
@@ -29,8 +28,7 @@ export default function QueryProcessor(query: string): string {
       else if ((z > x) && (z > y))
         return z.toString();
     }
-  }
-  
+
   const addMatch = query.match(/What is (\d+) plus (\d+)/);
   if (addMatch) {
     const x: number = parseInt(addMatch[1]);
