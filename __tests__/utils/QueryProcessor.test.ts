@@ -41,4 +41,12 @@ describe("QueryProcessor", () => {
             "55"
         ))
     })
+
+    test('should answer multiplied 10', () => {
+        const query = "What is 2 multiplied by 5?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe((
+            "10"
+        ))
+    })
 });
