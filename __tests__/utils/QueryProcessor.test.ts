@@ -33,4 +33,12 @@ describe("QueryProcessor", () => {
             "seking"
         ))
     })
+
+    test('should answer largest 55', () => {
+        const query = "Which of the following numbers is the largest: 5, 10, 55?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe((
+            "55"
+        ))
+    })
 });
