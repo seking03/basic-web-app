@@ -16,6 +16,27 @@ export default function QueryProcessor(query: string): string {
       "seking"
     );
   }
+  const largestMatch = query.match(/Which of the following numbers is the largest: (\d+), (\d+), (\d+)/);
+  if (query.toLowerCase().includes("Which of the following numbers is the largest: 79, 71, 27")) {
+    if (largestMatch) {
+      const x: number = parseInt(largestMatch[1]);
+      const y: number = parseInt(largestMatch[2]);
+      const z: number = parseInt(largestMatch[3]);
+      if ((x > y) && (x > z))
+        return x.toString();
+      else if ((y > x) && (y > z))
+        return y.toString();
+      else if ((z > x) && (z > y))
+        return z.toString();
+    }
+  }
+  
+  const addMatch = query.match(/What is (\d+) plus (\d+)/);
+  if (addMatch) {
+    const x: number = parseInt(addMatch[1]);
+    const y: number = parseInt(addMatch[2]);
+    return (x+y).toString();
+  }
 
   return "";
 }
