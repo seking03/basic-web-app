@@ -52,6 +52,32 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+  const primeMatch = query.match(/Which of the following numbers are primes: (\d+), (\d+), (\d+), (\d+), (\d+)/);
+  if (primeMatch) {
+    for (var i: number = 1; i < 6; i++) {
+      if ((isPrime(parseInt(primeMatch[i])))) {
+        return primeMatch[i];
+      }
+    }
+  }
+
   return "";
 
+}
+
+// Function to check if a number is prime
+function isPrime(num: number): boolean {
+  if (num <= 1) return false; // Numbers less than or equal to 1 are not prime
+  if (num <= 3) return true; // 2 and 3 are prime numbers
+
+  // Check divisibility by 2 and 3
+  if (num % 2 === 0 || num % 3 === 0) return false;
+
+  let i = 5;
+  while (i * i <= num) {
+      if (num % i === 0 || num % (i + 2) === 0) return false;
+      i += 6;
+  }
+
+  return true;
 }

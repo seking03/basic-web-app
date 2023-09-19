@@ -49,4 +49,13 @@ describe("QueryProcessor", () => {
             "10"
         ))
     })
+
+    test('should answer 7', () => {
+        const query = "Which of the following numbers are primes: 8, 10, 12, 14, 7?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe((
+            "7"
+        ))
+    })
+
 });
