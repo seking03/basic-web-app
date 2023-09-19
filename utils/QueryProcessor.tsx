@@ -36,6 +36,13 @@ export default function QueryProcessor(query: string): string {
     return (x+y).toString();
   }
 
+  const subMatch = query.match(/What is (\d+) minus (\d+)/);
+  if (subMatch) {
+    const x: number = parseInt(subMatch[1]);
+    const y: number = parseInt(subMatch[2]);
+    return (x-y).toString();
+  }
+
   const multMatch = query.match(/What is (\d+) multiplied by (\d+)/);
   if (multMatch) {
     const x : number = parseInt(multMatch[1]);
@@ -46,8 +53,10 @@ export default function QueryProcessor(query: string): string {
   const sqcuMatch = query.match(/Which of the following numbers is both a square and a cube: (\d+), (\d+), (\d+), (\d+), (\d+), (\d+), (\d+)/);
   if (sqcuMatch) {
     for (var i: number = 1; i < 8; i++) {
-      if ((Math.sqrt(parseInt(sqcuMatch[i])) != null) && (Math.cbrt(parseInt(sqcuMatch[i])) != null)) {
-        return sqcuMatch[i];
+      if ((Math.sqrt(parseInt(sqcuMatch[i])) % 1 === 0)) {
+        if ((Math.cbrt(parseInt(sqcuMatch[i])) % 1 == 0)){
+          return sqcuMatch[i];
+        }  
       }
     }
   }

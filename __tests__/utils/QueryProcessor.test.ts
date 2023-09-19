@@ -50,7 +50,15 @@ describe("QueryProcessor", () => {
         ))
     })
 
-    test('should answer 7', () => {
+    test('should answer cb rt 16', () => {
+        const query = "Which of the following numbers is both a square and a cube: 8, 7, 6, 5, 4, 2, 16?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe((
+            "16"
+        ))
+    })
+
+    test('should answer prime 7', () => {
         const query = "Which of the following numbers are primes: 8, 10, 12, 14, 7?";
         const response: string = QueryProcessor(query);
         expect(response).toBe((
